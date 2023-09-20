@@ -10,3 +10,14 @@ num_samples = 48000
 wav_file = wave.open(infile, 'r')
 data = wav_file.readframes(num_samples)
 wav_file.close()
+
+data = struct.unpack('{n}h'.format(n=num_samples), data)
+data = np.array(data)
+
+#converting data to numpy array
+
+data_fft = np.fft.fft(data)
+print(data_fft)
+
+#we are going to get the frequencies we want
+frequencies = np.abs(data_fft)
