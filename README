@@ -1,5 +1,4 @@
 #
 
-I will generate a sine wave with this written program
-
-sms-tools-commits: --
+main.py - Sine Wave Generator
+get_freq.py - Reads generated file
