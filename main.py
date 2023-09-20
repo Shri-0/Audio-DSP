@@ -5,12 +5,6 @@ import struct
 import matplotlib.pyplot as plt
 
 
-
-
-
-
-
-
 #frequency - number of times a sine wave repeats in a second. We will use 1k
 frequency = 1000
 
@@ -28,10 +22,22 @@ num_samples = 48000
 #sampling rate
 sampling_rate = 48000.0
 amplitude = 16000
-
 file = "test.wav"
 
 
 #function
 sine_wave = [np.sin(2 * np.pi * frequency * x/sampling_rate)
              for x in range(num_samples)]
+
+# [] = final answer will be converted into a list
+# range() function generates a list of numbers from 0 to num_samples....looping over a variable from 0 to 48000
+
+nframes=num_samples
+comptype = "NONE"
+compname="not compressed"
+nchannels=1
+sampwidth=2
+
+wav_file=wave.open(file, 'w')
+wav_file.setparams((nchannels, sampwidth, int(sampling_rate), nframes, comptype, compname))
+#opening the file and setting the parameters
