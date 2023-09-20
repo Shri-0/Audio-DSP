@@ -50,4 +50,25 @@ for s in combined_signal:
     wav_file.writeframes(struct.pack('h', int(s*amplitude)))
 '''
 
+plt.subplot(3,1,1)
+plt.title("Original Sine Wave")
 
+plt.subplots_adjust(hspace = .5)
+plt.plot(sine_wave[:500])
+plt.subplot(3,1,2)
+plt.title("Noisy Wave")
+plt.plot(sine_noise[:4000])
+plt.subplot(3,1,3)
+
+plt.title("Original + Noise")
+plt.plot(combined_signal[:3000])
+plt.show()
+
+data_fft = np.fft.fft(combined_signal)    #contains the noise and signal wave
+freq = (np.abs(data_fft[:len(data_fft)]))
+
+plt.plot(freq)
+
+plt.title("Before filtering: Will have main signal (1000hz) + noise frequency (50hz)")
+
+plt.xlim(0,1200)
