@@ -41,3 +41,6 @@ sampwidth=2
 wav_file=wave.open(file, 'w')
 wav_file.setparams((nchannels, sampwidth, int(sampling_rate), nframes, comptype, compname))
 #opening the file and setting the parameters
+
+for s in sine_wave:
+    wav_file.writeframes(struct.pack('h', int(s*amplitude)))
