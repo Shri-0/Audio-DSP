@@ -17,7 +17,11 @@ data = np.array(data)
 #converting data to numpy array
 
 data_fft = np.fft.fft(data)
-print(data_fft)
+#print(data_fft)
 
 #we are going to get the frequencies we want
 frequencies = np.abs(data_fft)
+
+#data_fft[1] will contain frequency parts of 1Hz
+#data_fft[2] will contain frequency part of 2Hz
+print("The frequency is {} Hz".format(np.argmax(frequencies)))
