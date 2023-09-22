@@ -40,7 +40,7 @@ file = "testing.wav"
 
 combined_signal = sine_wave + noise_wav
 
-'''
+
 wav_file = wave.open(file, 'w')
 wav_file.setparams((nchannels, sampwidth, int(
     sampling_rate), nframes, comptype, compname))
@@ -48,7 +48,7 @@ wav_file.setparams((nchannels, sampwidth, int(
 
 for s in combined_signal:
     wav_file.writeframes(struct.pack('h', int(s*amplitude)))
-'''
+
 
 plt.subplot(3, 1, 1)
 plt.title("Original Sine Wave")
@@ -76,6 +76,7 @@ plt.show()
 
 
 ###### Continue from here later########
+'''
 filtered_freq = []
 index = 0
 for f in freq:
@@ -98,6 +99,16 @@ for f in freq:
     else:
         filtered_freq.append(0)
 index += 1
+'''
+
+filtered_freq = [f if (950 < index < 1050 and f >1) else 0 for index, f in enumerate(freq)]
+
+
 
 #if the freuency is too low, we dont attach it, and we go through the index range some more
 
+plt.plot(filtered_freq)
+plt.title("After Filtering: Main signal only (1000Hz)")
+plt.xlim(0,1200)
+plt.show()
+plt.close()
