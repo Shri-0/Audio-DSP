@@ -2,3 +2,4 @@
 
 main.py - Sine Wave Generator
 get_freq.py - Reads generated file
+noise.py - add noise, analyzes noise with and without addition into main sine Wave (used matplotlib to show steps)
