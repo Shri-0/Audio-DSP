@@ -78,18 +78,26 @@ plt.show()
 ###### Continue from here later########
 filtered_freq = []
 index = 0
-
-
-
-
 for f in freq:
+# We create an empty list called filter_freq. freq stores the abs value of the fft(frequencies present)
+
+
+
     # Filter between lower and upper limits
     # Choosing 950, since it is closest to 1000.
     if index > 950 and index < 1050:
+		#index = current array element in the array freq. you are searching for frequencies stored in the fft between
+		#those values so that you can pinpoint 1000
+
+
         if f > 1:
             filtered_freq.append(f)
+            #while all frequencis will be present, their abs values will be miniscule, and less than 1. If we find a value > 1, we store it in the array
         else:
             filtered_freq.append(0)
     else:
         filtered_freq.append(0)
 index += 1
+
+#if the freuency is too low, we dont attach it, and we go through the index range some more
+
