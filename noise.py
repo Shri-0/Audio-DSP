@@ -76,3 +76,20 @@ plt.show()
 
 
 ###### Continue from here later########
+filtered_freq = []
+index = 0
+
+
+
+
+for f in freq:
+    # Filter between lower and upper limits
+    # Choosing 950, since it is closest to 1000.
+    if index > 950 and index < 1050:
+        if f > 1:
+            filtered_freq.append(f)
+        else:
+            filtered_freq.append(0)
+    else:
+        filtered_freq.append(0)
+index += 1
