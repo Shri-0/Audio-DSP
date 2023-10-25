@@ -100,34 +100,35 @@ for f in freq:
 index += 1
 '''
 
-filtered_freq = [f if (950 < index < 1050 and f >1) else 0 for index, f in enumerate(freq)]
+filtered_freq = [f if (950 < index < 1050 and f > 1)
+                 else 0 for index, f in enumerate(freq)]
 
-#if the freuency is too low, we dont attach it, and we go through the index range some more
+# if the freuency is too low, we dont attach it, and we go through the index range some more
 
 plt.plot(filtered_freq)
 plt.title("After Filtering: Main signal only (1000Hz)")
-plt.xlim(0,1200)
+plt.xlim(0, 1200)
 plt.show()
 plt.close()
 
 
-#recovered signal - takes our signal and converts it back to time domain
+# recovered signal - takes our signal and converts it back to time domain
 
 recovered_signal = np.fft.ifft(filtered_freq)
 
 
-plt.subplot(3,1,1)
+plt.subplot(3, 1, 1)
 plt.title("Original Sine Wave")
 
 # Need to add empty space, else everything will looked scrunched up.
 
 plt.subplots_adjust(hspace=.5)
 plt.plot(sine_wave[:500])
-plt.subplot(3,1,2)
+plt.subplot(3, 1, 2)
 plt.title("Noisy Wave")
 
 plt.plot(combined_signal[:4000])
-plt.subplot(3,1,3)
+plt.subplot(3, 1, 3)
 plt.title("Sine Wave after clean up")
 plt.plot((recovered_signal[:500]))
 plt.show()
